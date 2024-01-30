@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from "axios"
 import styled from "styled-components"
-export const Input = () => {
+export const Input = ({getdata}) => {
     const [title,setTitle] = useState("")
     const [files, setFile] = useState("")
 
@@ -16,6 +16,10 @@ export const Input = () => {
             headers: {'Content-Type':'multipart/form-data'}
         }).then((res)=>{
             console.log(res)
+            alert("Pdf uploaded succesfully!")
+            setTitle("")
+            setFile("")
+            getdata()
         }).catch((err)=>{
             console.log(err)
         })
